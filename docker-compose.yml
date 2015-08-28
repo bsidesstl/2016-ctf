@@ -1,6 +1,5 @@
 billboard:
   build: .
   ports:
-   - "20:20"
    - "21:21"
    - "22:22"
