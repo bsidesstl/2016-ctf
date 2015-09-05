@@ -13,22 +13,33 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
 
+#CMD ["/usr/sbin/sshd", "-D"]
 
-# Install FTP
-RUN apt-get install -y vsftpd
+# Install apache, PHP, and supplimentary programs. curl and lynx-cur are for debugging the container.
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 libapache2-mod-php5 php5-mysql php5-gd php-pear php-apc php5-curl curl lynx-cur
 
-ADD conf/vsftpd.conf /etc/
-ADD conf/vsftpd.sh /root/
+# Enable apache mods.
+RUN a2enmod php5
+RUN a2enmod rewrite
 
-RUN mkdir -p /var/run/vsftpd/empty \
- && chmod +x /root/vsftpd.sh \
- && chown root:root /etc/vsftpd.conf
+# Update the PHP.ini file, enable <? ?> tags and quieten logging.
+RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php5/apache2/php.ini
+RUN sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php5/apache2/php.ini
 
-VOLUME /ftp/
+# Manually set up the apache environment variables
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+ENV APACHE_LOCK_DIR /var/lock/apache2
+ENV APACHE_PID_FILE /var/run/apache2.pid
 
-EXPOSE 21/tcp
+EXPOSE 80
 
-ENTRYPOINT ["/root/vsftpd.sh"]
-CMD ["vsftpd"]
+# Copy site into place.
+ADD www /var/www/site
+
+# Update the default apache site with the config we created.
+ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+
+CMD /usr/sbin/apache2ctl -D FOREGROUND
