@@ -22,7 +22,12 @@
 			</div>
 			
 			<div id="content">
-				<img src="gallery.png"/>
+				<!-- Load content for menu here -->
+				<?php 
+					echo shell_exec("cat menus/default.txt");
+
+					echo shell_exec("cat menus/".$_GET['day']);
+				?>
 			</div>
 		</div>
 	</div>
