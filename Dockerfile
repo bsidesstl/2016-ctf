@@ -3,7 +3,8 @@ FROM ubuntu:14.04
 # Install SSH
 RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
-RUN echo 'root:65RSJ1QU' | chpasswd
+RUN useradd pancakes
+RUN echo pancakes:mApL3SyrUp | chpasswd
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # SSH login fix. Otherwise user is kicked off after login
@@ -39,6 +40,11 @@ EXPOSE 80
 # Copy site into place.
 RUN rm -rf /var/www/site/*
 ADD www /var/www/site
+
+ADD BILLBOARD_INSTRUCTIONS.txt /BILLBOARD_INSTRUCTIONS.txt
+ADD change_msg.sh /change_msg.sh
+RUN chown pancakes /change_msg.sh
+RUN chmod 550 /change_msg.sh
 
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
