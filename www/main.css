@@ -79,6 +79,12 @@ time, mark, audio, video {
 	font-size: 18px;
 }
 
+#menu {
+    text-align: left;
+    width: 600px;
+    margin: 0 auto;
+}
+
 body {
     line-height:1;
 }

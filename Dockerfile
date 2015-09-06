@@ -37,6 +37,7 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 EXPOSE 80
 
 # Copy site into place.
+RUN rm -rf /var/www/site/*
 ADD www /var/www/site
 
 # Update the default apache site with the config we created.

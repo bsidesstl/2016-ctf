@@ -16,6 +16,7 @@
 					<li><a href="index.php">Home</a></li>
 					<li><a href="about.php">About</a></li>
 					<?php 
+						date_default_timezone_set('America/New_York');
 						echo "<li><a href=\"menu.php?day=".strtolower(date('l')).".txt\">Menu</a></li>";
 					?>
 				</ul>

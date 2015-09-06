@@ -3,4 +3,5 @@ billboard:
   ports:
    - "22:22"
    - "80:80"
-
+  volumes:
+   - /root/cyberville_billboard_challenge_m2/www/:/var/www/site/

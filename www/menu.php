@@ -16,6 +16,7 @@
 					<li><a href="index.php">Home</a></li>
 					<li><a href="about.php">About</a></li>
 					<?php 
+						date_default_timezone_set('America/New_York');
 						echo "<li><a href=\"menu.php?day=".strtolower(date('l')).".txt\">Menu</a></li>";
 					?>
 				</ul>
@@ -23,11 +24,13 @@
 			
 			<div id="content">
 				<!-- Load content for menu here -->
-				<?php 
-					echo shell_exec("cat menus/default.txt");
+				<div id="menu">
+					<?php 
+						echo shell_exec("cat menus/default.txt");
 
-					echo shell_exec("cat menus/".$_GET['day']);
-				?>
+						echo shell_exec("cat menus/".$_GET['day']);
+					?>
+				</div>
 			</div>
 		</div>
 	</div>
