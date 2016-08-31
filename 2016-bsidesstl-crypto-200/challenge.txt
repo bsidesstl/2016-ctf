@@ -1,5 +1,5 @@
 
-Hint: The enemy is planning a surprise attack on your presidential palace,
+The enemy is planning a surprise attack on your presidential palace,
 Castle Wolfenstein. It's your job to spy on them and determine their most
 likely vector of attack. The flag is in the form of STL-<key><vector>.
 
