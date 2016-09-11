@@ -1,0 +1,6 @@
+So you like coding, huh?  Well one of the network admins also likes coding.  He created a program with an easter egg.
+If you can solve 100 math problems in a row the egg will be revealed.  :-)
+
+Hint: two decimal places where applicable (1.01 + .09 = 1.1)
+
+nc ctf.bsidesstl.org 9000
