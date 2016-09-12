@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo MCA-A82D90C6
+echo STL-EB2AF900
 
