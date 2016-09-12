@@ -1,5 +1,5 @@
 
-# Cyberville Level 2 (200-300pt Challenge)
+# Network Level 2 (200-300pt Challenge)
 
 This challenge requires the competitor to use knowledge of web URL parameter vulnerabilities and basic UNIX commands. The scenario is set up to where Cyberville's Paula O's Pancake House has created a website to attract customers, which has been directly connected to their billboard in order to save funds. Using the URL parameter exploit, a user is to gain escalated access to the ssh port on the same box in order to run a script that will change the text on the billboard and output the key.
 
@@ -24,4 +24,4 @@ Note that the user "pancakes" has read and execute access on the program which c
 9. Copy the outputed key and paste it into the scoreboard for points.
 
 
-Key: MCA-A82D90C6
+Key: STL-EB2AF900
