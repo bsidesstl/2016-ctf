@@ -12,4 +12,4 @@ Ciphertext: rzlvtqlcvksnkcsgcuxoykuvjzdz
 
 Plaintext: ATTACKTHEEASTWALLOFTHECASTLE
 
-Flag: RGSVEAST
+Flag: STL-RGSVEAST
